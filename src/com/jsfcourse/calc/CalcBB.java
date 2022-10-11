@@ -17,50 +17,64 @@ public class CalcBB {
 	private String z;
 	private Double result;
 
-	@Inject
-	FacesContext ctx;
-
+	
 	public String getX() {
 		return x;
 	}
+
 
 	public void setX(String x) {
 		this.x = x;
 	}
 
+
 	public String getY() {
 		return y;
 	}
 
+
 	public void setY(String y) {
 		this.y = y;
 	}
-	
+
+
 	public String getZ() {
 		return z;
 	}
 
+
 	public void setZ(String z) {
-		this.x = z;
+		this.z = z;
 	}
+
 
 	public Double getResult() {
 		return result;
 	}
 
+
 	public void setResult(Double result) {
 		this.result = result;
 	}
 
+	@Inject
+	FacesContext ctx;
+
+
+
 	
 	
 	public boolean doTheMath() {
-		FacesContext ctx = FacesContext.getCurrentInstance();	
+
 		try {
 			double lata = Double.parseDouble(this.x);		//lata
 			double kwota = Double.parseDouble(this.y);		//kwota
 			double procent = Double.parseDouble(this.z);	//procent
-
+			
+			System.out.println(lata);
+			System.out.println(kwota);
+			System.out.println(procent);
+			
 			double miesiące = lata * 12;
 			result = kwota + (kwota*procent/100);
 			result = result/miesiące;
@@ -88,6 +102,8 @@ public class CalcBB {
 	public String calc_AJAX() {
 		if (doTheMath()) {
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Wynik: " + result, null));
+			
+			
 		}
 		return null;
 	}
