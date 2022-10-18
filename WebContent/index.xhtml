@@ -3,7 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
 <h:head>
 	<title>Kalkulator kredytowy</title>
 </h:head>
@@ -12,22 +15,24 @@
 	<h1>Kalkulator kredytowy</h1>
 
 	<h:form id="bla">
-  		Ilośc lat <h:inputText value="#{calcBB.x}" />
+	
+  		Ilośc lat <p:inputText class="card" value="#{calcBB.x}" />
 		<br />
-  		Kwota <h:inputText value="#{calcBB.y}" />
+  		Kwota <p:inputText class="card" value="#{calcBB.y}" />
 		<br />
-		Procent <h:inputText value="#{calcBB.z}" />
+		Procent <p:inputText class="card" value="#{calcBB.z}" />
 		<br />
-		<h:messages id="msg" />
+		<p:messages id="msg" />
 
-		<h:commandButton value="Oblicz" action="#{calcBB.calc()}"/>
+		<p:commandButton class="card" value="Oblicz" action="#{calcBB.calc()}"/>
 		<br />
-		<h:commandButton value="Oblicz (AJAX)" action="#{calcBB.calc_AJAX()}">
+		<p:commandButton class="card" value="Oblicz (AJAX)" action="#{calcBB.calc_AJAX()}">
 			<f:ajax execute="@form" render="msg" />
-		</h:commandButton>
+		</p:commandButton>
 		<br />
 		<h:commandLink value="Informacje" action="#{calcBB.info()}" />
 	</h:form>
+	
 
 </h:body>
 </html>
